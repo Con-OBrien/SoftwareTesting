@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Loan</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Loan (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Loan</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (33/ 33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/**
+<i>2</i>&nbsp; * Created by t00025164 on 09/02/2018.
+<i>3</i>&nbsp; */
+<i>4</i>&nbsp;public class Loan {
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;    //----------------------------------
+<i>7</i>&nbsp;//    Data Members
+<i>8</i>&nbsp;//----------------------------------
+<i>9</i>&nbsp;    // Constant for the number of months in a year
+<b class="fc"><i>10</i>&nbsp;    private final int MONTHS_IN_YEAR = 12;</b>
+<i>11</i>&nbsp;    // The amount of the loan
+<i>12</i>&nbsp;    private double loanAmount;
+<i>13</i>&nbsp;    // Yearly interest rate
+<i>14</i>&nbsp;    private double annualRate;
+<i>15</i>&nbsp;    //The monthly interest rate
+<i>16</i>&nbsp;    private double monthlyInterestRate;
+<i>17</i>&nbsp;    // The number of monthly payments
+<i>18</i>&nbsp;    private int numberOfPayments;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    //----------------------------------
+<i>21</i>&nbsp;//    Constructor
+<i>22</i>&nbsp;//----------------------------------
+<b class="fc"><i>23</i>&nbsp;    public Loan() {</b>
+<b class="fc"><i>24</i>&nbsp;    }</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    //Creates a new Loan object with passed values.
+<b class="fc"><i>27</i>&nbsp;    public Loan(double amount, int period) {</b>
+<b class="fc"><i>28</i>&nbsp;        setAmount(amount);</b>
+<b class="fc"><i>29</i>&nbsp;        setPeriod(period);</b>
+<b class="fc"><i>30</i>&nbsp;        setRate(period);</b>
+<b class="fc"><i>31</i>&nbsp;    }</b>
+<i>32</i>&nbsp;//-------------------------------------------------
+<i>33</i>&nbsp;//      Public Methods:
+<i>34</i>&nbsp;//          double  getAmount   (           )
+<i>35</i>&nbsp;//          double  getPeriod   (           )
+<i>36</i>&nbsp;//          int     getRate     (           )
+<i>37</i>&nbsp;//
+<i>38</i>&nbsp;//          double  getMontlyPayment(       )
+<i>39</i>&nbsp;//          double  getTotalPayment (       )
+<i>40</i>&nbsp;//
+<i>41</i>&nbsp;//      Private methods
+<i>42</i>&nbsp;//          void    setAmount   ( double    )
+<i>43</i>&nbsp;//          void    setPeriod   ( int       )
+<i>44</i>&nbsp;//          void    setRate     ()
+<i>45</i>&nbsp;//------------------------------------------------
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    //Returns the loan amount.
+<i>48</i>&nbsp;    public double getAmount() {
+<b class="fc"><i>49</i>&nbsp;        return loanAmount;</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    //Returns the loan period in the number of years.
+<i>53</i>&nbsp;    public int getPeriod()
+<i>54</i>&nbsp;    {
+<b class="fc"><i>55</i>&nbsp;        return numberOfPayments / MONTHS_IN_YEAR;</b>
+<i>56</i>&nbsp;    }
+<i>57</i>&nbsp;    //Returns the annual interest rate.
+<i>58</i>&nbsp;    public double getRate() {
+<i>59</i>&nbsp;
+<b class="fc"><i>60</i>&nbsp;        return annualRate;</b>
+<i>61</i>&nbsp;    }
+<i>62</i>&nbsp;    //Returns the monthly payment
+<i>63</i>&nbsp;    public double getMonthlyPayment() {
+<i>64</i>&nbsp;        double monthlyPayment;
+<i>65</i>&nbsp;
+<b class="fc"><i>66</i>&nbsp;        monthlyPayment = (loanAmount * monthlyInterestRate)</b>
+<b class="fc"><i>67</i>&nbsp;                / (1 - Math.pow(1 / (1 + monthlyInterestRate),</b>
+<i>68</i>&nbsp;                numberOfPayments));
+<b class="fc"><i>69</i>&nbsp;        return monthlyPayment;</b>
+<i>70</i>&nbsp;    }
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;    //Returns the total payment
+<i>73</i>&nbsp;    public double getTotalPayment() {
+<i>74</i>&nbsp;        double totalPayment;
+<b class="fc"><i>75</i>&nbsp;        totalPayment = getMonthlyPayment() * numberOfPayments;</b>
+<b class="fc"><i>76</i>&nbsp;        return totalPayment;</b>
+<i>77</i>&nbsp;    }
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;    //Sets the loan amount of this loan.
+<i>80</i>&nbsp;    private void setAmount(double amount) throws IllegalArgumentException {
+<i>81</i>&nbsp;
+<b class="fc"><i>82</i>&nbsp;        if (amount &lt;= 500.0) {</b>
+<b class="fc"><i>83</i>&nbsp;            throw new IllegalArgumentException();</b>
+<i>84</i>&nbsp;        }
+<b class="fc"><i>85</i>&nbsp;        loanAmount = amount;</b>
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;
+<b class="fc"><i>88</i>&nbsp;    }</b>
+<i>89</i>&nbsp;
+<i>90</i>&nbsp;    //Sets the interest rate of this loan.
+<i>91</i>&nbsp;    private void setRate(int period) {
+<i>92</i>&nbsp;
+<b class="fc"><i>93</i>&nbsp;        if((loanAmount &gt;=500) &amp;&amp; (loanAmount &lt;=5000)) {</b>
+<b class="fc"><i>94</i>&nbsp;            if (period &gt;= 1 &amp;&amp; period &lt;= 3) {</b>
+<b class="fc"><i>95</i>&nbsp;                annualRate = 10;</b>
+<i>96</i>&nbsp;            } else {
+<b class="fc"><i>97</i>&nbsp;                annualRate = 6;</b>
+<i>98</i>&nbsp;            }
+<i>99</i>&nbsp;        }
+<b class="fc"><i>100</i>&nbsp;        else if ((loanAmount &gt;=5001) &amp;&amp; (loanAmount &lt;=10000))</b>
+<i>101</i>&nbsp;
+<i>102</i>&nbsp;        {
+<b class="fc"><i>103</i>&nbsp;            if(period &gt;=1 &amp;&amp; period &lt;= 3 ){</b>
+<b class="fc"><i>104</i>&nbsp;                annualRate = 8;</b>
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;            }
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;            else
+<i>109</i>&nbsp;            {
+<b class="fc"><i>110</i>&nbsp;                annualRate = 5;</b>
+<i>111</i>&nbsp;            }
+<i>112</i>&nbsp;        }
+<i>113</i>&nbsp;        else
+<i>114</i>&nbsp;        {
+<b class="fc"><i>115</i>&nbsp;           throw new IllegalArgumentException();</b>
+<i>116</i>&nbsp;        }
+<i>117</i>&nbsp;
+<i>118</i>&nbsp;
+<b class="fc"><i>119</i>&nbsp;            monthlyInterestRate = annualRate / 100.0 / MONTHS_IN_YEAR;</b>
+<b class="fc"><i>120</i>&nbsp;        }</b>
+<i>121</i>&nbsp;
+<i>122</i>&nbsp;        //Sets the loan period of this loan.
+<i>123</i>&nbsp;    private void setPeriod(int periodInYears)
+<i>124</i>&nbsp;    {
+<b class="fc"><i>125</i>&nbsp;        numberOfPayments = periodInYears * MONTHS_IN_YEAR;</b>
+<b class="fc"><i>126</i>&nbsp;    }</b>
+<i>127</i>&nbsp;
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;
+<i>130</i>&nbsp;
+<i>131</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-03-23 12:07</div>
+</div>
+</body>
+</html>
